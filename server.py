@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- coding: iso-8859-15 -*-
 """
-Clase (y programa principal) para un servidor de eco
-en UDP simple
+Clase (y programa principal) para un servidor de SIP
 """
 
 import SocketServer
@@ -47,7 +46,7 @@ def register2file():
 
 class SIPRegisterHandler(SocketServer.DatagramRequestHandler):
     """
-    Echo server class
+    SIP server class
     """
     def handle(self):
         # Escribe dirección y puerto del cliente (de tupla client_address)
@@ -77,7 +76,7 @@ class SIPRegisterHandler(SocketServer.DatagramRequestHandler):
                 break
 
 if __name__ == "__main__":
-    # Creamos servidor de eco y escuchamos
+    # Creamos servidor de sip y escuchamos
     serv = SocketServer.UDPServer(("", PORT), SIPRegisterHandler)
-    print "Lanzando servidor UDP de eco..."
+    print "Lanzando servidor SIP..."
     serv.serve_forever()
